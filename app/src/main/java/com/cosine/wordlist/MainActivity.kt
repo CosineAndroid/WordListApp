@@ -1,38 +1,61 @@
 package com.cosine.wordlist
 
+import android.content.Context
+import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.text.Editable
 import android.view.View
-import android.widget.Button
-import android.widget.CompoundButton
 import android.widget.LinearLayout
-import android.widget.Switch
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.size
+import com.cosine.wordlist.databinding.WordAndAnswerBinding
 import com.cosine.wordlist.databinding.WordCardBinding
 
 class MainActivity : AppCompatActivity() {
 
+    companion object {
+        lateinit var preferences: SharedPreferences
+        lateinit var editor: SharedPreferences.Editor
+    }
+
     private lateinit var wordList: LinearLayout
-    private lateinit var switchButton: Switch
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
+        preferences = getPreferences(Context.MODE_PRIVATE)
 
         wordList = findViewById(R.id.wordList)
-        switchButton = findViewById(R.id.switchButton)
-        switchButton.setOnCheckedChangeListener { _, isChecked ->
-            if (isChecked) {
-                Toast.makeText(applicationContext, "활성화", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(applicationContext, "비활성화", Toast.LENGTH_SHORT).show();
-            }
+
+        wordList.removeAllViews()
+        for ((word, answer) in preferences.all) {
+            addWordCard(word, answer.toString())
+        }
+
+        editor = preferences.edit()
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        wordList.removeAllViews()
+        for ((word, answer) in preferences.all) {
+            addWordCard(word, answer.toString())
         }
     }
-    fun onClickWordPlusButton(view: View) {
-        val index = wordList.size - 1
-        val newWordCard = WordCardBinding.inflate(layoutInflater).word
+    fun onClickEditModeButton(view: View) {
+        val intent = Intent(applicationContext, EditActivity::class.java)
+        startActivity(intent)
+    }
+    fun addWordCard(word: String, answer: String) {
+        val newWordCard = WordCardBinding.inflate(layoutInflater)
+
+        newWordCard.apply {
+            this.wordBack.root.text = answer.toEditable()
+            this.wordFront.root.text = word.toEditable()
+        }
 
         val layoutParams = LinearLayout.LayoutParams(
             LinearLayout.LayoutParams.MATCH_PARENT,
@@ -40,6 +63,6 @@ class MainActivity : AppCompatActivity() {
         )
         layoutParams.setMargins(0, 0, 0, 60)
 
-        wordList.addView(newWordCard, index, layoutParams)
+        wordList.addView(newWordCard.wordEdit, layoutParams)
     }
 }

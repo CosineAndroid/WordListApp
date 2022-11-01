@@ -4,6 +4,6 @@
     android:layout_height="match_parent"
     android:id="@+id/menuToolbar">
 
-    <include layout="@layout/main_content"/>
+    <include layout="@layout/contents_read_mode"/>
 
 </androidx.appcompat.widget.Toolbar>

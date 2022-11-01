@@ -2,7 +2,7 @@
 <com.wajahatkarim3.easyflipview.EasyFlipView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/word"
+    android:id="@+id/wordEdit"
     android:layout_width="@dimen/wordWidth"
     android:layout_height="@dimen/wordHeight"
     android:layout_gravity="center"
@@ -10,7 +10,13 @@
     app:flipOnTouch="true"
     app:flipEnabled="true"
     app:flipDuration="400"
-    app:flipType="horizontal">
-    <include layout="@layout/word_back" />
-    <include layout="@layout/word_front" />
+    app:flipType="horizontal" >
+    <include
+        android:id="@+id/wordBack"
+        layout="@layout/word_back"
+        />
+    <include
+        android:id="@+id/wordFront"
+        layout="@layout/word_front"
+        />
 </com.wajahatkarim3.easyflipview.EasyFlipView>

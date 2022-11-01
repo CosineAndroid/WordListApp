@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:id="@+id/wordAndAnswerEdit"
+    android:layout_width="370dp"
+    android:layout_height="40dp"
+    android:layout_gravity="center"
+    android:layout_marginBottom="@dimen/wordDistance"
+    android:orientation="horizontal">
+
+    <EditText
+        android:id="@+id/wordEdit"
+        android:layout_width="170dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:background="@drawable/word_front_background"
+        android:ems="10"
+        android:gravity="center" />
+
+    <EditText
+        android:id="@+id/answerEdit"
+        android:layout_width="170dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/word_back_background"
+        android:ems="10"
+        android:gravity="center" />
+
+</LinearLayout>

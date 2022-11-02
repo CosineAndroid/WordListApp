@@ -23,17 +23,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
-            <include layout="@layout/word_and_answer" />
-            <include layout="@layout/word_and_answer" />
-            <include layout="@layout/word_and_answer" />
-            <include layout="@layout/word_and_answer" />
-            <include layout="@layout/word_and_answer" />
-            <include layout="@layout/word_and_answer" />
-            <include layout="@layout/word_and_answer" />
-            <include layout="@layout/word_and_answer" />
-            <include layout="@layout/word_and_answer" />
-            <include layout="@layout/word_and_answer" />
             <include layout="@layout/word_add_button" />
         </LinearLayout>
     </ScrollView>

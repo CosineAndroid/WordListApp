@@ -1,11 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/defaultCategory"
+        android:id="@+id/categoryMenu0"
         android:title="기본"
         android:icon="@drawable/ic_baseline_event_note_24"/>
     <item
-        android:id="@+id/addCategoryButton"
-        android:title="추가"
-        android:icon="@drawable/ic_baseline_add_24"/>
+        android:id="@+id/categoryMenu1"
+        android:title="카테고리1"
+        android:icon="@drawable/ic_baseline_event_note_24"/>
+    <item
+        android:id="@+id/categoryMenu2"
+        android:title="카테고리2"
+        android:icon="@drawable/ic_baseline_event_note_24"/>
+    <item
+        android:id="@+id/categoryMenu3"
+        android:title="카테고리3"
+        android:icon="@drawable/ic_baseline_event_note_24"/>
+    <item
+        android:id="@+id/categoryMenu4"
+        android:title="카테고리4"
+        android:icon="@drawable/ic_baseline_event_note_24"/>
+    <item
+        android:id="@+id/categoryMenu5"
+        android:title="카테고리5"
+        android:icon="@drawable/ic_baseline_event_note_24"/>
+    <item
+        android:id="@+id/categoryMenu6"
+        android:title="카테고리6"
+        android:icon="@drawable/ic_baseline_event_note_24"/>
+    <item
+        android:id="@+id/categoryMenu7"
+        android:title="카테고리7"
+        android:icon="@drawable/ic_baseline_event_note_24"/>
+    <item
+        android:id="@+id/categoryMenu8"
+        android:title="카테고리8"
+        android:icon="@drawable/ic_baseline_event_note_24"/>
+    <item
+        android:id="@+id/categoryMenu9"
+        android:title="카테고리9"
+        android:icon="@drawable/ic_baseline_event_note_24"/>
+    <item
+        android:id="@+id/categoryMenu10"
+        android:title="카테고리10"
+        android:icon="@drawable/ic_baseline_event_note_24"/>
 </menu>

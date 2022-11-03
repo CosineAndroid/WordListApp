@@ -8,37 +8,61 @@
 
     <ImageButton
         android:id="@+id/editModeButton"
-        android:onClick="onClickEditModeButton"
         android:layout_width="63dp"
         android:layout_height="61dp"
         android:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/wordScroll"
+        android:contentDescription="해당 단어장에서 수정 모드로 전환합니다."
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.98"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.007"
-        app:srcCompat="@android:drawable/ic_menu_manage"
-        android:contentDescription="해당 단어장에서 수정 모드로 전환합니다." />
+        app:srcCompat="@android:drawable/ic_menu_manage" />
 
-    <ScrollView
-        android:id="@+id/wordScroll"
-        android:layout_width="match_parent"
-        android:layout_height="660dp"
-        android:foregroundGravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
-
-        <LinearLayout
-            android:id="@+id/wordList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-        </LinearLayout>
-    </ScrollView>
+    <include
+        layout="@layout/contents_category"
+        android:id="@+id/category0"
+        android:visibility="visible"/>
+    <include
+        layout="@layout/contents_category"
+        android:id="@+id/category1"
+        android:visibility="invisible"/>
+    <include
+        layout="@layout/contents_category"
+        android:id="@+id/category2"
+        android:visibility="invisible"/>
+    <include
+        layout="@layout/contents_category"
+        android:id="@+id/category3"
+        android:visibility="invisible"/>
+    <include
+        layout="@layout/contents_category"
+        android:id="@+id/category4"
+        android:visibility="invisible"/>
+    <include
+        layout="@layout/contents_category"
+        android:id="@+id/category5"
+        android:visibility="invisible"/>
+    <include
+        layout="@layout/contents_category"
+        android:id="@+id/category6"
+        android:visibility="invisible"/>
+    <include
+        layout="@layout/contents_category"
+        android:id="@+id/category7"
+        android:visibility="invisible"/>
+    <include
+        layout="@layout/contents_category"
+        android:id="@+id/category8"
+        android:visibility="invisible"/>
+    <include
+        layout="@layout/contents_category"
+        android:id="@+id/category9"
+        android:visibility="invisible"/>
+    <include
+        layout="@layout/contents_category"
+        android:id="@+id/category10"
+        android:visibility="invisible"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

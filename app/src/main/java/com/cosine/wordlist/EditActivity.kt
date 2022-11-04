@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
 import androidx.core.view.size
+import com.cosine.wordlist.MainActivity.Companion.data
 import com.cosine.wordlist.MainActivity.Companion.nowCategory
 import com.cosine.wordlist.MainActivity.Companion.setting
 import com.cosine.wordlist.databinding.ActivityMainBinding
@@ -33,7 +34,7 @@ class EditActivity : AppCompatActivity() {
 
         wordListEdit = editBinding.wordListEdit
 
-        preferences = getSharedPreferences("Data", MODE_PRIVATE)
+        preferences = getSharedPreferences(data, MODE_PRIVATE)
         editor = preferences.edit()
         loadWordData()
     }
@@ -43,7 +44,7 @@ class EditActivity : AppCompatActivity() {
         setting = false
     }
     private fun loadWordData() {
-        val jsonString = preferences.getString("$nowCategory", "0") ?: return
+        val jsonString = preferences.getString("$nowCategory", null) ?: return
         val categoryArray = JSONObject(jsonString)
 
         for (word in categoryArray.keys()) {

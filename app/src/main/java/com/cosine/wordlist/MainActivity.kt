@@ -1,17 +1,20 @@
 package com.cosine.wordlist
 
+import android.R
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.Menu
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.MenuItem
 import android.view.View
 import android.view.View.OnClickListener
-import android.widget.ImageButton
-import android.widget.LinearLayout
+import android.view.ViewGroup
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.core.view.children
+import androidx.core.view.get
 import androidx.drawerlayout.widget.DrawerLayout
 import com.cosine.wordlist.databinding.ActivityMainBinding
 import com.cosine.wordlist.databinding.WordCardBinding
@@ -27,6 +30,7 @@ class MainActivity : AppCompatActivity(),
         val scope = CoroutineScope(Dispatchers.Main)
         var nowCategory: Int = 0
         var setting = false
+        var data = "test"
     }
 
     private lateinit var mainBinding: ActivityMainBinding
@@ -37,6 +41,7 @@ class MainActivity : AppCompatActivity(),
     private lateinit var navigationView: NavigationView
     private lateinit var drawerLayout: DrawerLayout
     private lateinit var editButton: ImageButton
+    private lateinit var categoryTitle: EditText
 
     private lateinit var categoryWordList0: LinearLayout
     private lateinit var categoryWordList1: LinearLayout
@@ -55,12 +60,13 @@ class MainActivity : AppCompatActivity(),
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
 
-        preferences = getSharedPreferences("Data", MODE_PRIVATE)
+        preferences = getSharedPreferences(data, MODE_PRIVATE)
         editor = preferences.edit()
 
         navigationView = mainBinding.categoryNavigation
         drawerLayout = mainBinding.drawerLayout
         editButton = mainBinding.category.editModeButton
+        categoryTitle = mainBinding.category.categoryTitle
 
         categoryWordList0 = mainBinding.category.category0.wordList
         categoryWordList1 = mainBinding.category.category1.wordList
@@ -76,11 +82,26 @@ class MainActivity : AppCompatActivity(),
 
         navigationView.setNavigationItemSelectedListener(this)
         editButton.setOnClickListener(this)
+        categoryTitle.addTextChangedListener(textWatcher)
 
+        setDefaultTitle()
         loadWordData()
     }
+    private fun setDefaultTitle() {
+        (0..10).forEach {
+            if (preferences.contains("타이틀$it")) {
+                val title = preferences.getString("타이틀$it", "")
+                mainBinding.categoryNavigation.menu[it].title = title
+                setNavigationTitleToEditText()
+            } else {
+                editor.putString("타이틀$it", "카테고리$it")
+                if (it == 0) editor.putString("타이틀0", "기본")
+                editor.apply()
+            }
+        }
+    }
     private fun loadWordData() {
-        categoryWordList0.removeAllViews()
+        removeViewFromTargetView()
         val jsonString = preferences.getString("$nowCategory", null) ?: return
         val categoryArray = JSONObject(jsonString)
 
@@ -103,7 +124,55 @@ class MainActivity : AppCompatActivity(),
         )
         layoutParams.setMargins(0, 0, 0, 60)
 
-        categoryWordList0.addView(newWordCard.wordEdit, layoutParams)
+        addWordCardToTargetView(newWordCard.wordEdit, layoutParams)
+    }
+    private fun removeViewFromTargetView() {
+        if (nowCategory == 0) categoryWordList0.removeAllViews()
+        if (nowCategory == 1) categoryWordList1.removeAllViews()
+        if (nowCategory == 2) categoryWordList2.removeAllViews()
+        if (nowCategory == 3) categoryWordList3.removeAllViews()
+        if (nowCategory == 4) categoryWordList4.removeAllViews()
+        if (nowCategory == 5) categoryWordList5.removeAllViews()
+        if (nowCategory == 6) categoryWordList6.removeAllViews()
+        if (nowCategory == 7) categoryWordList7.removeAllViews()
+        if (nowCategory == 8) categoryWordList8.removeAllViews()
+        if (nowCategory == 9) categoryWordList9.removeAllViews()
+        if (nowCategory == 10) categoryWordList10.removeAllViews()
+    }
+    private fun addWordCardToTargetView(child: View, params: ViewGroup.LayoutParams) {
+        if (nowCategory == 0) categoryWordList0.addView(child, params)
+        if (nowCategory == 1) categoryWordList1.addView(child, params)
+        if (nowCategory == 2) categoryWordList2.addView(child, params)
+        if (nowCategory == 3) categoryWordList3.addView(child, params)
+        if (nowCategory == 4) categoryWordList4.addView(child, params)
+        if (nowCategory == 5) categoryWordList5.addView(child, params)
+        if (nowCategory == 6) categoryWordList6.addView(child, params)
+        if (nowCategory == 7) categoryWordList7.addView(child, params)
+        if (nowCategory == 8) categoryWordList8.addView(child, params)
+        if (nowCategory == 9) categoryWordList9.addView(child, params)
+        if (nowCategory == 10) categoryWordList10.addView(child, params)
+    }
+    private val textWatcher = object: TextWatcher {
+        // 입력 전
+        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+        }
+        // 입력 변화 시
+        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+        }
+        // 입력 끝
+        override fun afterTextChanged(p0: Editable?) {
+            if (p0.toString().isEmpty()) {
+                Toast.makeText(applicationContext, "카테고리 이름을 적어주세요!", Toast.LENGTH_SHORT).show()
+                return
+            }
+            val categoryTitleName = p0.toString()
+            mainBinding.categoryNavigation.menu[nowCategory].title = categoryTitleName
+            saveTitle(categoryTitleName)
+        }
+    }
+    private fun saveTitle(title: String) {
+        editor.putString("타이틀$nowCategory", title)
+        editor.apply()
     }
     override fun onBackPressed() {
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
@@ -117,7 +186,14 @@ class MainActivity : AppCompatActivity(),
         val categories = menu.children
         val last = categories.indexOf(categories.last())
         val order = categories.indexOf(item)
+
+        if (drawerLayout.isDrawerOpen(GravityCompat.START))
+            drawerLayout.closeDrawer(GravityCompat.START)
+
+        if (nowCategory == order) return false
+
         nowCategory = order
+        println("누른 카테고리 $order")
         when (order) {
             0 -> onChangeCategory(categoryWordList0)
             1 -> onChangeCategory(categoryWordList1)
@@ -131,25 +207,25 @@ class MainActivity : AppCompatActivity(),
             9 -> onChangeCategory(categoryWordList9)
             10 -> onChangeCategory(categoryWordList10)
         }
-        if (drawerLayout.isDrawerOpen(GravityCompat.START))
-            drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
     private fun onChangeCategory(targetCategory: LinearLayout) {
         mainBinding.category.root.children.forEach {
-            println("뷰: $it")
-            if (it is LinearLayout) {
-                if (it != targetCategory) {
+            if (it is ScrollView) {
+                if (it.children.first() == targetCategory) {
+                    it.visibility = View.VISIBLE
+                    loadWordData()
+                    setNavigationTitleToEditText()
+                } else {
                     it.visibility = View.INVISIBLE
                 }
             }
         }
     }
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        menuInflater.inflate(R.menu.categories, menu)
-        return true
+    private fun setNavigationTitleToEditText() {
+        val title = preferences.getString("타이틀$nowCategory", "Error")
+        mainBinding.category.categoryTitle.text = title!!.toEditable()
     }
-
     override fun onClick(p0: View?) {
         val intent = Intent(applicationContext, EditActivity::class.java)
         startActivity(intent)

@@ -16,8 +16,8 @@
         android:layout_height="match_parent" >
 
         <include
-            layout="@layout/contents_read_mode"
-            android:id="@+id/category"/>
+            android:id="@+id/category"
+            layout="@layout/contents_read_mode" />
     </FrameLayout>
 
 <!--    <LinearLayout-->

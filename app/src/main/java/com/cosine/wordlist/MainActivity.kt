@@ -1,6 +1,5 @@
 package com.cosine.wordlist
 
-import android.R
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -18,10 +17,12 @@ import androidx.core.view.get
 import androidx.drawerlayout.widget.DrawerLayout
 import com.cosine.wordlist.databinding.ActivityMainBinding
 import com.cosine.wordlist.databinding.WordCardBinding
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.*
 import org.json.JSONObject
-
 
 class MainActivity : AppCompatActivity(),
     NavigationView.OnNavigationItemSelectedListener, OnClickListener {
@@ -55,10 +56,18 @@ class MainActivity : AppCompatActivity(),
     private lateinit var categoryWordList9: LinearLayout
     private lateinit var categoryWordList10: LinearLayout
 
+    lateinit var adView : AdView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
+
+        MobileAds.initialize(this) {}
+
+        adView = mainBinding.category.adView
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
 
         preferences = getSharedPreferences(data, MODE_PRIVATE)
         editor = preferences.edit()

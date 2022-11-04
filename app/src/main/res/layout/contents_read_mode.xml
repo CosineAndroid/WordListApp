@@ -2,15 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
 
     <ImageButton
         android:id="@+id/editModeButton"
-        android:layout_width="63dp"
-        android:layout_height="61dp"
+        android:layout_width="67dp"
+        android:layout_height="62dp"
         android:backgroundTint="#FFFFFF"
         android:contentDescription="해당 단어장에서 수정 모드로 전환합니다."
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,22 +22,21 @@
 
     <EditText
         android:id="@+id/categoryTitle"
-        android:layout_width="200dp"
-        android:layout_height="70dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:ems="10"
         android:fontFamily="@font/font1"
         android:gravity="center"
         android:inputType="textPersonName"
+        android:maxLength="10"
+        android:singleLine="true"
         android:text="기본"
         android:textSize="25dp"
-        android:singleLine="true"
-        android:maxLength="10"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.001" />
+        app:layout_constraintVertical_bias="0.016" />
 
     <include
         layout="@layout/contents_category"
@@ -80,9 +78,10 @@
         layout="@layout/contents_category"
         android:id="@+id/category9"
         android:visibility="invisible"/>
+
     <include
-        layout="@layout/contents_category"
         android:id="@+id/category10"
+        layout="@layout/contents_category"
         android:visibility="invisible"/>
 
     <com.google.android.gms.ads.AdView

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="readModeScrollSize">100dp</dimen>
+    <dimen name="editModeScrollSize">80dp</dimen>
+
+    <dimen name="editModeMarginSide">20dp</dimen>
+    <dimen name="editModeWordMarginMiddle">210dp</dimen>
+    <dimen name="editModeAnswerMarginMiddle">-190dp</dimen>
+</resources>

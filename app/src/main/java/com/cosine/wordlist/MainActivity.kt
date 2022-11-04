@@ -24,6 +24,7 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.*
 import org.json.JSONObject
 
+
 class MainActivity : AppCompatActivity(),
     NavigationView.OnNavigationItemSelectedListener, OnClickListener {
 
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity(),
     private lateinit var categoryWordList9: LinearLayout
     private lateinit var categoryWordList10: LinearLayout
 
-    lateinit var adView : AdView
+    private lateinit var adView : AdView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

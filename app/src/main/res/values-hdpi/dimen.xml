@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="readModeScrollSize">51dp</dimen>
+    <dimen name="editModeScrollSize">40dp</dimen>
+
+    <dimen name="editModeMarginSide">10dp</dimen>
+    <dimen name="editModeWordMarginMiddle">105dp</dimen>
+    <dimen name="editModeAnswerMarginMiddle">-95dp</dimen>
+</resources>
+
+<!--    mdpi 160dpi =-->
+<!--    hdpi 240dpi =-->
+<!--    xhdpi	 320dpi =-->
+<!--    (내거) xxhdpi 480dpi = 80dp-->
+<!--    xxxhdpi 640dpi =-->
+
+
+<!--    mdpi * 1.5 = hdpi-->
+<!--    hdpi * 1.33 = xhdpi-->
+<!--    xhdpi * 1.5 = xxhdpi-->
+<!--    xxhdpi * 1.333 = xxxhdpi-->

@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.children
 import androidx.core.view.size
 import com.cosine.wordlist.MainActivity.Companion.data
@@ -64,7 +65,7 @@ class EditActivity : AppCompatActivity() {
             LinearLayout.LayoutParams.MATCH_PARENT,
             LinearLayout.LayoutParams.WRAP_CONTENT
         )
-        layoutParams.setMargins(30, 0, 0, 60)
+        layoutParams.setMargins(0, 0, 0, 60)
 
         wordListEdit.addView(newWordCard.wordAndAnswerEdit, index, layoutParams)
     }
@@ -90,10 +91,10 @@ class EditActivity : AppCompatActivity() {
         val newWordCard = WordAndAnswerBinding.inflate(layoutInflater).wordAndAnswerEdit
 
         val layoutParams = LinearLayout.LayoutParams(
-            LinearLayout.LayoutParams.MATCH_PARENT,
+            LinearLayout.LayoutParams.WRAP_CONTENT,
             LinearLayout.LayoutParams.WRAP_CONTENT
         )
-        layoutParams.setMargins(30, 0, 0, 60)
+        layoutParams.setMargins(0, 0, 0, 50)
 
         wordListEdit.addView(newWordCard, index, layoutParams)
     }

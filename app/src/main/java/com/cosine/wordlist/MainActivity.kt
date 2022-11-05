@@ -24,7 +24,6 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.*
 import org.json.JSONObject
 
-
 class MainActivity : AppCompatActivity(),
     NavigationView.OnNavigationItemSelectedListener, OnClickListener {
 
@@ -32,7 +31,7 @@ class MainActivity : AppCompatActivity(),
         val scope = CoroutineScope(Dispatchers.Main)
         var nowCategory: Int = 0
         var setting = false
-        var data = "test"
+        var data = "WordData"
     }
 
     private lateinit var mainBinding: ActivityMainBinding
@@ -65,7 +64,6 @@ class MainActivity : AppCompatActivity(),
         setContentView(mainBinding.root)
 
         MobileAds.initialize(this) {}
-
         adView = mainBinding.category.adView
         val adRequest = AdRequest.Builder().build()
         adView.loadAd(adRequest)
@@ -203,7 +201,6 @@ class MainActivity : AppCompatActivity(),
         if (nowCategory == order) return false
 
         nowCategory = order
-        println("누른 카테고리 $order")
         when (order) {
             0 -> onChangeCategory(categoryWordList0)
             1 -> onChangeCategory(categoryWordList1)

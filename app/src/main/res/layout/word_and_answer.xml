@@ -19,6 +19,7 @@
         android:ems="10"
         android:gravity="center"
         android:textSize="20sp"
+        android:fontFamily="@font/font1"
         android:singleLine="true"/>
 
     <EditText
@@ -32,6 +33,7 @@
         android:ems="10"
         android:gravity="center"
         android:textSize="20sp"
+        android:fontFamily="@font/font2"
         android:singleLine="true"/>
 
 </LinearLayout>

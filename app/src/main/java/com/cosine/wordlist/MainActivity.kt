@@ -1,5 +1,6 @@
 package com.cosine.wordlist
 
+import android.app.Dialog
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.View.OnClickListener
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
@@ -23,6 +25,7 @@ import com.google.android.gms.ads.MobileAds
 import com.google.android.material.navigation.NavigationView
 import kotlinx.coroutines.*
 import org.json.JSONObject
+
 
 class MainActivity : AppCompatActivity(),
     NavigationView.OnNavigationItemSelectedListener, OnClickListener {

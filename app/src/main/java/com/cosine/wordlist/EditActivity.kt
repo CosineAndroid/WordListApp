@@ -1,9 +1,11 @@
 package com.cosine.wordlist
 
+import android.app.Dialog
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.text.Editable
 import android.view.View
+import android.view.WindowManager
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
